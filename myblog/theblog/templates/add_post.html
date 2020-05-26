@@ -1,0 +1,41 @@
+{% extends 'base.html'%}
+ 
+<script>
+
+
+    // Call hideShow when page is loaded
+    $(document).ready(function(){
+        hideShow()
+    })
+
+   
+
+// The jquery function below hides/shows the k_v, DI and length fields depending on the selected component_type 
+function hideShow(){
+    
+    console.log('yo');
+    	document.querySelector("#youtube").hide()
+        document.querySelector("#youtube > p:nth-child(2)").hide();
+        document.querySelector("#youtube > p:nth-child(3)").hide();
+        
+    
+    }
+
+
+</script>
+
+
+{% block content %}
+<br>
+<h1>Transcribe Your YouTube Video</h2>
+<br>
+<p>Place your youtube video url (e.g. https://www.youtube.com/watch?v=wfAR4VPSVHk)
+<form id="youtube" method="POST">
+	{% csrf_token %}
+	{{form.as_p}}
+	<button type="submit" class="btn btn-secondary">Transcribe!</button>
+
+</form>
+
+
+{% endblock %}

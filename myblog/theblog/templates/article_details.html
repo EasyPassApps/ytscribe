@@ -1,0 +1,28 @@
+
+{% extends 'base.html'%}
+{% block title %}  {{post.title}} {% endblock %}
+{% block content %}
+<h1>Transcription: {{post.title}}</h1>
+<small>{{post.title_tag}}</small>
+<hr>
+
+
+{% autoescape off %}
+{{post.body}}
+{% endautoescape %}
+
+<br><br>
+
+{% load social_share %}
+
+{% post_to_facebook object_or_url "Post to Facebook!" %}
+{% post_to_twitter "New Transcriptions: {{object.title}}. Check it out!" object_or_url "Post to Twitter" %}
+{% post_to_linkedin object.title object_or_url "Post to LinkedIn" %}
+{% send_email object.title "New Song: {{object.title}}. Check it out!" object_or_url "Share via email" %}
+{% post_to_reddit "New Song: {{object.title}}" object_or_url  %}
+{% post_to_telegram "New Song: {{object.title}}" object_or_url   %}
+{% post_to_whatsapp object_or_url "Share via WhatsApp" %}
+
+<a href="{%url 'home' %}" class="btn btn-secondary">Back</a>
+
+{% endblock %}

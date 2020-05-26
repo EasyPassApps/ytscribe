@@ -1,0 +1,19 @@
+{% extends 'base.html'%}
+   
+{% block content %}
+
+<h1>Post</h2>
+{% for post in foo %}
+{{post}}<span>.</span><br><br>
+{% endfor%}
+
+<ul>
+{% for post in object_list|slice:":1" %}
+{{ post.specialtag }}
+	<li><a href="{% url 'article-detail' post.pk %}">{{post.title}} - {{post.auth.first_name}}</a><br/>
+	{{post.body}}</li>
+{% endfor%}
+</ul>
+
+<p>Here's the real deal</p>
+{% endblock %}

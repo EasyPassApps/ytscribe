@@ -1,0 +1,37 @@
+{% extends 'base.html'%}
+ 
+<script>
+{% block jquery %}
+
+    // Call hideShow when page is loaded
+    $(document).ready(function(){
+        hideShow()
+    })
+
+   
+
+// The jquery function below hides/shows the k_v, DI and length fields depending on the selected component_type 
+function hideShow(){
+    
+        $('#youtube').parents('p:first').hide();
+        $('#youtube').parents('p:second').hide();
+        $('#youtube').parents('p:third').hide();
+    
+    }
+
+{% endblock %}
+</script>
+
+{% block content %}
+
+<h1>Add Blog Post</h2>
+<br><Br>
+<form id="youtube" method="POST">
+	{% csrf_token %}
+	{{form.as_p}}
+	<button type="submit" class="btn btn-secondary">Post</button>
+
+</form>
+
+
+{% endblock %}

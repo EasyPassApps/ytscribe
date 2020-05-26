@@ -1,0 +1,15 @@
+{% extends 'base.html'%}
+   
+{% block content %}
+
+<h1>Post</h2>
+
+<ul>
+{% for post in object_list %}
+	<li><a href="{% url 'article-detail' post.pk post.vid_id %}">{{post.title}} - {{post.title_tag}}</a><br/>
+		<img src="https://img.youtube.com/vi/{{post.vid_id}}/default.jpg">
+	{{post.body|slice:"206:400"}}</li>
+{% endfor%}
+</ul>
+
+{% endblock %}
